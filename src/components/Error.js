@@ -1,6 +1,6 @@
 import React from 'react';
 
-class MissingPage extends React.Component {
+class Error extends React.Component {
 
   render() {
     return (
@@ -9,4 +9,4 @@ class MissingPage extends React.Component {
   }
 }
 
-export default MissingPage;
+export default Error;

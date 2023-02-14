@@ -14,7 +14,7 @@ class Books extends React.Component {
 
   render() {
     const books = this.state.bookData.map(book => (
-      <li index={ book._id }>{ book.title }: { book.description }, { book.status }</li>
+      <li key={ book._id }>{ book.title }: { book.description }, { book.status }</li>
     ));
 
     return (
