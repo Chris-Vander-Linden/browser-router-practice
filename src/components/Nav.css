@@ -1,0 +1,15 @@
+nav ul {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  background-color: gray;
+
+  list-style: none;
+}
+
+nav ul a {
+  display: inline-block;
+  padding: 5px;
+  color: inherit; /* parent colors for links too */
+  text-decoration: inherit; /* no underline */
+}
