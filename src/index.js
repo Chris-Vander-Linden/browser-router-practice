@@ -4,8 +4,7 @@ import {
   createBrowserRouter,
   RouterProvider,
   createRoutesFromElements,
-  Route,
-  Link,
+  Route
 } from "react-router-dom";
 import App from './App.js';
 import About from './components/About.js';
