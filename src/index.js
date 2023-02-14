@@ -9,18 +9,17 @@ import {
 import App from './App.js';
 import About from './components/About.js';
 import Books from './components/Books.js';
-import MissingPage from './components/MissingPage.js';
+import Error from './components/Error.js';
 
 import './index.css';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-      <Route path="/" element={ <App /> } >
-        <Route path="/" element={ <>HOME!!!</>} />
-        <Route path="/books" element={ <Books /> } />
-        <Route path="/about" element={ <About /> } />
-        <Route path="/missing" element={ <MissingPage /> } />
-      </Route>
+    <Route path="/" element={ <App /> } errorElement={ <Error /> }>
+      <Route path="/" element={ <>HOME!!! Welcome.  It's a cool site for cool kids!</> } />
+      <Route path="/books" element={ <Books /> } />
+      <Route path="/about" element={ <About /> } />
+    </Route>
   )
 );
 
