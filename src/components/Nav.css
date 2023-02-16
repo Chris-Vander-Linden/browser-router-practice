@@ -10,6 +10,7 @@ nav ul {
 nav ul a {
   display: inline-block;
   padding: 5px;
+  font-weight: bold;
   color: inherit; /* parent colors for links too */
   text-decoration: inherit; /* no underline */
 }
