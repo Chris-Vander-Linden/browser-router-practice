@@ -52,7 +52,7 @@ class BestBooks extends React.Component {
     
     };
 
-    axios.get(`${process.env.REACT_APP_RENDERURL}/searchBooks/?search=${this.state.searchBook}`).then(data => {
+    axios.get(`http://localhost:3001/searchBooks/?search=${this.state.searchBook}` || `${process.env.REACT_APP_RENDERURL}/searchBooks/?search=${this.state.searchBook}`).then(data => {
         console.log(data.data);
           this.setState({ searchBookData: data.data,
           disableSearch: true,
@@ -64,7 +64,7 @@ class BestBooks extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`${process.env.REACT_APP_RENDERURL}/books`).then(data => this.setState({ bookData: data.data }));
+    axios.get('http://localhost:3001/books' || `${process.env.REACT_APP_RENDERURL}/books`).then(data => this.setState({ bookData: data.data }));
   }
 
   render() {
