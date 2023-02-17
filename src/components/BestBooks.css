@@ -1,0 +1,30 @@
+h2, h3 {
+  padding: 5px 5px 0px 0px;
+}
+
+form,
+#bestBookContainer ul,
+#addedBook {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 5px;
+
+  border: 1px solid black;
+  background-color: rgb(235, 235, 235);
+
+  list-style: none;
+}
+
+#addedBook {
+  margin-top: 5px;
+  display: block;
+}
+
+form input,
+form select {
+  margin-bottom: 5px;
+}
+
+input[type="submit"]:hover {
+  cursor: pointer;
+}
