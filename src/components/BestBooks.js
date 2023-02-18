@@ -42,14 +42,14 @@ class BestBooks extends React.Component {
     if (this.state.selectedBookGoogleID && !this.state.activeTextSearch) {
 
       const bookToPost = this.state.searchBookData.filter(book => book.googleBookID === this.state.selectedBookGoogleID)[0];
-      // set this book in state for possible future reference.
-      this.setState({ bookToPost });
 
-      axios.post(`${process.env.REACT_APP_RENDERURL}/books`, bookToPost);
-      //console.log('POST', bookToPost);
+      console.log(bookToPost);
+      // set this book in state for possible future reference.
+      //this.setState({ bookToPost });
+
+      //axios.post(`${process.env.REACT_APP_RENDERURL}/books`, bookToPost);
 
       return;
-
     };
 
     axios.get(`${process.env.REACT_APP_RENDERURL}/searchBooks/?search=${this.state.searchBook}`).then(data => {
