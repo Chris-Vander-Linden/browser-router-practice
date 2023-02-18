@@ -47,11 +47,7 @@ class BestBooks extends React.Component {
       // set this book in state for possible future reference.
       //this.setState({ bookToPost });
 
-      axios.post(`${process.env.REACT_APP_RENDERURL}/books`, bookToPost).then(data => {
-        console.log(data);
-      }).catch(error => {
-        console.error(error);
-      });
+      //axios.post(`${process.env.REACT_APP_RENDERURL}/books`, bookToPost);
 
       return;
     };
