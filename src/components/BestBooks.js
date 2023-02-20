@@ -36,7 +36,7 @@ class BestBooks extends React.Component {
   }
 
   getAllBooks = () => {
-    axios.get(`${process.env.REACT_APP_RENDERURL}/books`).then(data => this.setState({ bookData: data.data }));
+    axios.get(`${process.env.REACT_APP_RENDERURL}/books`).then(data => this.setState({ bookData: data.data.reverse() }));
   }
 
   handleBookDelete = (id) => {
@@ -93,7 +93,7 @@ class BestBooks extends React.Component {
       <option key={ book.googleBookID } value={ book.googleBookID }>{ book.title } ({ book.author })</option>
     ))] : <option value="" disabled>Search above...</option>;
 
-    const books = this.state.bookData.reverse().map(book => (
+    const books = this.state.bookData.map(book => (
       <li key={ book._id } className='libraryBooks'>
         <div>
           <img src={ book.image ? book.image : missingImg } alt={ book.title } />
