@@ -1,17 +1,64 @@
 import React from 'react';
-import './About.css'
+import Carousel from 'react-bootstrap/Carousel';
+import './Home.css'
 
 class Home extends React.Component {
+  constructor (props) {
+    super(props);
+    this.state = { index: 0 }
+  }
+
+  handleSelect = (selectedIndex, e) => {
+    this.setState({ index: selectedIndex });
+  }
 
   render() {
     return (
       <div className='contentContainer'>
         <h2>Home</h2>
-        <p>Welcome to the home page!!! This is the about us section.  Kind of fun.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione vero ea iusto impedit aperiam hic, cum earum distinctio velit, libero pariatur optio necessitatibus fuga, veritatis quas? Esse consectetur qui veniam?</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus sequi dicta totam necessitatibus molestiae quidem eligendi voluptatum enim dolor, iste aut rem accusamus perferendis minima esse illo ducimus. Nam, voluptate.
-        </p>
-        <p>Consectetur adipisicing elit. Doloribus sequi dicta totam necessitatibus molestiae quidem eligendi voluptatum enim dolor, iste aut rem accusamus perferendis minima esse illo ducimus. Nam, voluptate.
-        </p>
+        <p>Welcome to the home page!!! Checkout these cool books!</p>
+
+        <Carousel activeIndex={ this.state.index } onSelect={ this.handleSelect } fade>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src="holder.js/800x400?text=First slide&bg=373940"
+              alt="First slide"
+            />
+            <Carousel.Caption>
+              <h3>First slide label</h3>
+              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src="holder.js/800x400?text=Second slide&bg=282c34"
+              alt="Second slide"
+            />
+
+            <Carousel.Caption>
+              <h3>Second slide label</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src="holder.js/800x400?text=Third slide&bg=20232a"
+              alt="Third slide"
+            />
+
+            <Carousel.Caption>
+              <h3>Third slide label</h3>
+              <p>
+                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+              </p>
+            </Carousel.Caption>
+          </Carousel.Item>
+        </Carousel>
+
+
       </div>
     )
   }

@@ -41,12 +41,12 @@ input[type="submit"]:hover {
   justify-content: center;
 }
 
-.libraryBooks:nth-last-of-type(even){
-    background-color: rgb(205, 205, 205);
+.libraryBooks:nth-last-of-type(even) {
+  background-color: rgb(205, 205, 205);
 }
 
-.libraryBooks:nth-last-of-type(odd){
-    background-color: rgb(156, 156, 156);
+.libraryBooks:nth-last-of-type(odd) {
+  background-color: rgb(156, 156, 156);
 }
 
 .libraryBooks button {
@@ -58,22 +58,40 @@ input[type="submit"]:hover {
   border-bottom: none;
 }
 
-li.libraryBooks div:first-of-type {
+div.statusBanner {
+  position: absolute;
+  background-color: rgb(255, 223, 160);
+  border: 1px solid rgb(0, 0, 0);
+  right: 5px;
+  width: 55px;
+  text-align: center;
+  border-radius: 3px;
+}
+
+div.statusBanner.read {
+  background-color: rgb(188, 255, 188);
+}
+
+li.libraryBooks > div {
+  position: initial;
+}
+
+li.libraryBooks > div:first-of-type {
   width: 100px;
 }
 
-li.libraryBooks div:first-of-type img {
+li.libraryBooks > div:first-of-type img {
   width: 100%;
 }
 
-li.libraryBooks div:last-of-type {
-  background-color: rgba(255, 255, 255, .75);
+li.libraryBooks > div:last-of-type {
+  background-color: rgba(255, 255, 255, 0.75);
   width: 100%;
-  overflow: scroll;
+  position: relative;
   padding: 5px;
   margin-left: 5px;
 }
 
-li.libraryBooks div:last-of-type h3 {
+li.libraryBooks > div:last-of-type h3 {
   padding: 0px;
 }
