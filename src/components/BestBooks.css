@@ -1,4 +1,5 @@
-h2, h3 {
+h2,
+h3 {
   padding: 5px 5px 0px 0px;
 }
 
@@ -15,6 +16,10 @@ form,
   list-style: none;
 }
 
+#bestBookContainer ul {
+  padding: 0;
+}
+
 #addedBook {
   margin-top: 5px;
   display: block;
@@ -27,4 +32,48 @@ form select {
 
 input[type="submit"]:hover {
   cursor: pointer;
+}
+
+.libraryBooks {
+  padding: 5px;
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: center;
+}
+
+.libraryBooks:nth-last-of-type(even){
+    background-color: rgb(205, 205, 205);
+}
+
+.libraryBooks:nth-last-of-type(odd){
+    background-color: rgb(156, 156, 156);
+}
+
+.libraryBooks button {
+  width: 100%;
+  cursor: pointer;
+}
+
+.libraryBooks:last-of-type {
+  border-bottom: none;
+}
+
+li.libraryBooks div:first-of-type {
+  width: 100px;
+}
+
+li.libraryBooks div:first-of-type img {
+  width: 100%;
+}
+
+li.libraryBooks div:last-of-type {
+  background-color: rgba(255, 255, 255, .75);
+  width: 100%;
+  overflow: scroll;
+  padding: 5px;
+  margin-left: 5px;
+}
+
+li.libraryBooks div:last-of-type h3 {
+  padding: 0px;
 }
