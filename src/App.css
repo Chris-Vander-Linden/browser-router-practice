@@ -1,4 +1,4 @@
-html{
+html {
   background-color: black;
 }
 
@@ -15,4 +15,8 @@ body {
 
   border: 1px solid black;
   background-color: rgb(209, 209, 209);
+}
+
+.hide {
+  display: none;
 }

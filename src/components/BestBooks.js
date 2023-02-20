@@ -105,12 +105,12 @@ class BestBooks extends React.Component {
           <label htmlFor="searchBook">Search a book:</label>
           <input id="searchBook" name="searchBook" type="text" onChange={ this.handleBookSearchText } value={ this.state.searchBook } placeholder="Type a book..." />
 
-          <label htmlFor="selectBook">Choose a book:</label>
-          <select id="selectBook" name="selectBook" placeholder="Search for a book" onChange={ this.handleBookSearchSelect } value={ this.state.selectedBookGoogleID }>
+          <label className={ this.state.activeTextSearch ? 'hide' : ''} htmlFor="selectBook">Choose a book:</label>
+          <select id="selectBook" className={ this.state.activeTextSearch ? 'hide' : '' } name="selectBook" placeholder="Search for a book" onChange={ this.handleBookSearchSelect } value={ this.state.selectedBookGoogleID }>
             { searchResults }
           </select>
 
-          <input type="submit" value="Search/Submit" disabled={ this.state.disableSearch } />
+          <input type="submit" value={ this.state.activeTextSearch ? 'Search' : 'Submit' } disabled={ this.state.disableSearch } />
         </form>
 
         <h3>Total Results:</h3>
