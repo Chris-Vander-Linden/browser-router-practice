@@ -11,9 +11,8 @@ import Home from './components/Home.js';
 import About from './components/About.js';
 import BestBooks from './components/BestBooks.js';
 import Error from './components/Error.js';
-
 import './index.css';
-console.log(<App />);
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={ <App /> } errorElement={ <Error /> }>
