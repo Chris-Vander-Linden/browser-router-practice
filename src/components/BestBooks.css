@@ -84,7 +84,7 @@ li.libraryBooks > div:first-of-type img {
   width: 100%;
 }
 
-li.libraryBooks > div:last-of-type {
+li.libraryBooks > div.bookContent, li.libraryBooks > form {
   background-color: rgba(255, 255, 255, 0.75);
   width: 100%;
   position: relative;

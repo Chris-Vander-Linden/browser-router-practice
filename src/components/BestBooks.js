@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import Book from './Book.js'
 import './BestBooks.css';
-import missingImg from '../images/missing-img.png';
 
 class BestBooks extends React.Component {
 
@@ -45,13 +45,16 @@ class BestBooks extends React.Component {
       .catch(error => console.error(error));
   }
 
-  handleBookUpdate = (id) => {
+  handleBookUpdate = (id, event, updatedObj) => {
+
+    event.preventDefault();
+
     axios.put(`${process.env.REACT_APP_RENDERURL}/books/${id}`,
       {
-        title: 'Another change',
-        author: ['New Author', 'New Author 2'],
-        description: 'description change!!!!!',
-        status: true
+        title: updatedObj.title,
+        author: updatedObj.author,
+        description: updatedObj.description,
+        status: updatedObj.status
       })
       .then(this.getAllBooks)
       .catch(error => console.error(error));
@@ -93,19 +96,10 @@ class BestBooks extends React.Component {
       <option key={ book.googleBookID } value={ book.googleBookID }>{ book.title } ({ book.author })</option>
     ))] : <option value="" disabled>Search above...</option>;
 
+    // unique key?
     const books = this.state.bookData.map(book => (
       <li key={ book._id } className='libraryBooks'>
-        <div>
-          <img src={ book.image ? book.image : missingImg } alt={ book.title } />
-          <button onClick={ () => { this.handleBookUpdate(book._id) } }>Update</button>
-          <button onClick={ () => { this.handleBookDelete(book._id) } }>Delete</button>
-        </div>
-        <div>
-          <div className={ `statusBanner ${book.status ? 'read' : ''}` }>{ book.status ? 'Read' : 'Unread' } </div>
-          <h3>{ book.title }</h3>
-          <h4>{ book.author?.join(', ') }</h4>
-          { book.description }
-        </div>
+      <Book book={book} onBookUpdate={this.handleBookUpdate} onBookDelete={this.handleBookDelete}/>
       </li>
     ));
 
