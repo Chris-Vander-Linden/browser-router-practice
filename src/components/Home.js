@@ -1,11 +1,17 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import './Home.css'
 
 class Home extends React.Component {
   constructor (props) {
     super(props);
-    this.state = { index: 0 }
+    this.state = { 
+      index: 0,
+      modalShow: false,
+      selectedBook: null
+    }
   }
 
   handleSelect = (selectedIndex, e) => {
@@ -13,52 +19,48 @@ class Home extends React.Component {
   }
 
   render() {
+
+    const carouselItems = this.props.bookData.map(item => (
+      <Carousel.Item key={item._id}>
+        <img src={item.image} alt={ item.title }/>
+        <Carousel.Caption>
+          <Button variant="primary" onClick={() => this.setState({modalShow: true,
+          selectedBook: item._id })}>
+            Read More
+          </Button>
+        </Carousel.Caption>
+      </Carousel.Item>
+    ));
+
     return (
       <div className='contentContainer'>
         <h2>Home</h2>
-        <p>Welcome to the home page!!! Checkout these cool books!</p>
+        <p>Welcome to the home page!!! Checkout these cool books!  I wish I knew how to read!</p>
 
-        <Carousel activeIndex={ this.state.index } onSelect={ this.handleSelect } fade>
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src="holder.js/800x400?text=First slide&bg=373940"
-              alt="First slide"
-            />
-            <Carousel.Caption>
-              <h3>First slide label</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src="holder.js/800x400?text=Second slide&bg=282c34"
-              alt="Second slide"
-            />
-
-            <Carousel.Caption>
-              <h3>Second slide label</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src="holder.js/800x400?text=Third slide&bg=20232a"
-              alt="Third slide"
-            />
-
-            <Carousel.Caption>
-              <h3>Third slide label</h3>
-              <p>
-                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-              </p>
-            </Carousel.Caption>
-          </Carousel.Item>
+        <Carousel activeIndex={ this.state.index } onSelect={ this.handleSelect }>
+          {carouselItems}
         </Carousel>
 
+      <Modal
+        show={this.state.modalShow}
+        onHide={() => this.setState({modalShow: false})}
+        dialogClassName="modal-90w"
+        aria-labelledby="example-custom-modal-styling-title"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="example-custom-modal-styling-title">
+            {this.props.bookData.filter(book => book._id === this.state.selectedBook)[0]?.title}
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>
+            {this.props.bookData.filter(book => book._id === this.state.selectedBook)[0]?.description}
+          </p>
+        </Modal.Body>
+      </Modal>
 
+
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repudiandae mollitia voluptate quidem error. Sint dignissimos nulla quos, unde amet maxime laborum repellendus quae soluta in distinctio ipsum veritatis laboriosam sequi, qui porro perferendis corrupti! Modi nemo ad blanditiis aliquid reiciendis suscipit ea atque velit officia? Eum possimus dignissimos exercitationem aut mollitia impedit voluptatibus inventore sint culpa sit magnam quisquam aliquid minima ducimus voluptas rem, autem suscipit nostrum recusandae enim consequatur. Nesciunt, delectus ea repudiandae eum blanditiis, quisquam voluptatum modi nihil in tempore est veritatis molestiae facere ex distinctio molestias. Quam veritatis facere tenetur, numquam autem quas dolorum sapiente dignissimos. Dignissimos non suscipit repellendus mollitia fugit quas dolorem eos fuga soluta delectus nemo laboriosam a, eaque id? Laudantium animi ducimus aperiam nesciunt, nulla quisquam?</p>
       </div>
     )
   }

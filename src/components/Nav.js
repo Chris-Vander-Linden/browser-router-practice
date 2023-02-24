@@ -12,7 +12,7 @@ class Nav extends React.Component {
             <Link to={ '' }>Home</Link>
           </li>
           <li>
-            <Link to={ `books` } >Books</Link>
+            <Link to={ `books` } >Edit Books</Link>
           </li>
           <li>
             <Link to={ `about` }>About Us</Link>

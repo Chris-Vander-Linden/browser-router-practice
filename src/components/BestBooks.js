@@ -9,7 +9,6 @@ class BestBooks extends React.Component {
     super(props);
     this.state =
     {
-      bookData: [],
       searchBookData: [],
       bookToPost: {},
       searchBook: '',
@@ -35,13 +34,10 @@ class BestBooks extends React.Component {
     })
   }
 
-  getAllBooks = () => {
-    axios.get(`${process.env.REACT_APP_RENDERURL}/books`).then(data => this.setState({ bookData: data.data.reverse() }));
-  }
-
+  // props from App.js
   handleBookDelete = (id) => {
     axios.delete(`${process.env.REACT_APP_RENDERURL}/books/${id}`)
-      .then(this.getAllBooks)
+      .then(this.props.getAllBooks)
       .catch(error => console.error(error));
   }
 
@@ -56,7 +52,7 @@ class BestBooks extends React.Component {
         description: updatedObj.description,
         status: updatedObj.status
       })
-      .then(this.getAllBooks)
+      .then(this.props.getAllBooks)
       .catch(error => console.error(error));
   }
 
@@ -67,7 +63,8 @@ class BestBooks extends React.Component {
 
       const bookToPost = this.state.searchBookData.filter(book => book.googleBookID === this.state.selectedBookGoogleID)[0];
 
-      axios.post(`${process.env.REACT_APP_RENDERURL}/books/`, bookToPost).then(this.getAllBooks);
+      // props from App.js
+      axios.post(`${process.env.REACT_APP_RENDERURL}/books/`, bookToPost).then(this.props.getAllBooks);
 
       return;
     };
@@ -85,8 +82,9 @@ class BestBooks extends React.Component {
     );
   }
 
+  // App.js props
   componentDidMount() {
-    this.getAllBooks();
+    this.props.getAllBooks();
   }
 
   //static contextType = Context;
@@ -97,7 +95,7 @@ class BestBooks extends React.Component {
     ))] : <option value="" disabled>Search above...</option>;
 
     // unique key?
-    const books = this.state.bookData.map(book => (
+    const books = this.props.bookData.map(book => (
       <li key={ book._id } className='libraryBooks'>
       <Book book={book} onBookUpdate={this.handleBookUpdate} onBookDelete={this.handleBookDelete}/>
       </li>
