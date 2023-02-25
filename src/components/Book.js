@@ -1,4 +1,8 @@
 import React from 'react';
+import { BsTrash } from 'react-icons/bs';
+import { GrUpdate } from 'react-icons/gr';
+import { RiCloseCircleLine } from 'react-icons/ri';
+import { ImEyeBlocked, ImEye } from 'react-icons/im';
 import missingImg from '../images/missing-img.png';
 
 class Book extends React.Component {
@@ -23,14 +27,14 @@ class Book extends React.Component {
     return <>
       <div>
         <img src={ this.props.book.image ? this.props.book.image : missingImg } alt={ this.props.book.title } />
-        <button onClick={ () => { this.setState({ showUpdateForm: !this.state.showUpdateForm }) } } >{ !this.state.showUpdateForm ? 'Update' : 'Close' }</button>
-        <button onClick={ () => { this.props.onBookDelete(this.props.book._id) } }>Delete</button>
+        <button onClick={ () => { this.setState({ showUpdateForm: !this.state.showUpdateForm }) } } >{ !this.state.showUpdateForm ? <><GrUpdate /> Update</> : <><RiCloseCircleLine /> Close</> }</button>
+        <button onClick={ () => { this.props.onBookDelete(this.props.book._id) } }><BsTrash /> Delete</button>
       </div>
 
       { !this.state.showUpdateForm ?
 
         <div className='bookContent'>
-          <div className={ `statusBanner ${this.props.book.status ? 'read' : ''}` }>{ this.props.book.status ? 'Read' : 'Unread' } </div>
+          <div className={ `statusBanner ${this.props.book.status ? 'read' : ''}` }>{ this.props.book.status ? <><ImEye /> Read</> : <><ImEyeBlocked /> Unread</> } </div>
           <h3>{ this.props.book.title }</h3>
           <h4>{ this.props.book.author?.join(', ') }</h4>
           { this.props.book.description }
@@ -38,7 +42,7 @@ class Book extends React.Component {
 
         :
 
-        <form id="updateBookForm" onSubmit={ (event) => { this.props.onBookUpdate(this.props.book._id, event, this.state); this.setState({ showUpdateForm: !this.state.showUpdateForm }); } }>
+        <form id={`updateBookForm-${this.props.book._id}`} onSubmit={ (event) => { this.props.onBookUpdate(this.props.book._id, event, this.state); this.setState({ showUpdateForm: !this.state.showUpdateForm }); } }>
           <div className='bookReadInput'>
             <label htmlFor={ `bookReadChange-${this.props.book._id}` }>Book Read?</label>
             <input id={ `bookReadChange-${this.props.book._id}` } type='checkbox' name='status' checked={ this.state.status } onChange={ this.handleBookFormChange }></input>

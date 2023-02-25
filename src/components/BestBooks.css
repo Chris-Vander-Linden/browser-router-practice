@@ -63,7 +63,7 @@ div.statusBanner {
   background-color: rgb(255, 223, 160);
   border: 1px solid rgb(0, 0, 0);
   right: 5px;
-  width: 55px;
+  width: 95px;
   text-align: center;
   border-radius: 3px;
 }
@@ -99,4 +99,28 @@ li.libraryBooks > div:last-of-type h3 {
 
 .bookReadInput {
   text-align: right;
+}
+
+.libraryBooks input[type="submit"] {
+  margin-top: 10px;
+}
+
+.bookReadInput label:nth-child(1) {
+  margin-right: 5px;
+}
+
+.libraryBooks textarea {
+  min-height: 100px;
+}
+
+.libraryBooks button,
+.libraryBooks img,
+.bookContent,
+.libraryBooks form {
+  border-radius: 3px;
+  border: 1px solid #000;
+}
+
+.libraryBooks button {
+  margin-top: 5px;
 }

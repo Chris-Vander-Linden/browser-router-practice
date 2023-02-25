@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import Book from './Book.js'
+import Book from './Book.js';
 import './BestBooks.css';
 
 class BestBooks extends React.Component {
