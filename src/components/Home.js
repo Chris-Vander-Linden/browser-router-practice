@@ -35,7 +35,8 @@ class Home extends React.Component {
     return (
       <div className='contentContainer'>
         <h2>Home</h2>
-        <p>Welcome to the home page!!! Checkout these cool books!  I wish I knew how to read!</p>
+        <p>Welcome to the home page!!! Checkout these cool books!</p>
+        <p>Note: books might take 30 seconds to load the first time, since the backend is hosted on the free version of Render</p>
 
         <Carousel activeIndex={ this.state.index } onSelect={ this.handleSelect }>
           {carouselItems}
